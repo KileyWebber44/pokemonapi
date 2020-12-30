@@ -1,0 +1,36 @@
+/* general set up */
+body{
+    background-color: rgb(11, 66, 97);
+}
+
+
+/* jumbotron */
+.jumbotron{
+    background: url("./assets/pokeheader.png");
+}
+
+#title{
+    font-family: 'Staatliches', cursive;
+}
+
+.lead{
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/* searchbar */
+#searchLabel{
+    padding: .5em;
+    font-size: x-large;
+    font-family: 'Staatliches', cursive;
+    color: white;
+}
+
+
+/* pokemon list */
+#evo{
+color: white;
+font-family: 'Raleway', sans-serif;
+font-size: xx-large;
+}
+

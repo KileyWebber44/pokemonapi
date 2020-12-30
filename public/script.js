@@ -1,22 +1,38 @@
-const baseURL = `https://pokeapi.co/api/v2/evolution-chain/`
+console.log('Gotta catch em all')
+const baseURL = `https://pokeapi.co/api/v2/evolution-chain`
 let url;
 
-const searchForm = document.querySelector(".input")
+const searchForm = document.querySelector("form");
+const searchTerm = document.querySelector(".input");
+// const submitButton = document.querySelector('#submit');
 
 searchForm.addEventListener("submit", fetchEvoChain)
 
 function fetchEvoChain(e) {
-    e.preventDefault()
-    let id = searchForm.value;
-    url = baseUrl + id;
+    e.preventDefault();
+    url = `${baseURL}/${searchTerm.value}`
+    console.log('URL:', url);
+
     fetch(url)
-    .then(responseObj => responseObj.json())
-    .then(jsonData => console.log(jsonData))
+    .then(function (result) {
+        console.log(result);
+        return result.json();
+    })
+    .then(function (json) {
+        console.log(json)
+        displayEvoChain(json)
+    })
+    .catch((err) => console.error({ error: err }))
     }  
 
-// function displayEvoChain(jsonData) {
-    // document.createElement("li")
-    
+const theStuff = document.querySelector("ul")
 
-// }
+function displayEvoChain(jsonData) {
+    while (theStuff.firstChild) {theStuff.removeChild(theStuff.firstChild)}
+    let newItem = document.createElement("li")
+    newItem.innerText = `${jsonData.chain.species.name} evolves into ${jsonData.chain.evolves_to[0].species.name}`
+
+    theStuff.appendChild(newItem)
+
+}
 
